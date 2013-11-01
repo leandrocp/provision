@@ -1,3 +1,8 @@
+- name: Install basic packages
+  apt: name={{item}} state=latest
+  with_items:
+    - zsh
+
 - name: Checkout oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
   sudo: no
@@ -7,8 +12,9 @@
   sudo: no
 
 - name: Install dotfiles
-  command: chdir=~/.dotfiles echo "y" | bash install.sh
+  command: chdir=~/.dotfiles bash install.sh
   sudo: no
 
 - name: Change shell to ZSH
-  command: chsh -s /bin/zsh
+  command: usermod -s /bin/zsh {{local_user}}
+

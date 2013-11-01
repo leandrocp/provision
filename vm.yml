@@ -5,4 +5,7 @@
     - firewall
     - git
     - dotfiles
+    - vim
     - rbenv
+    - ruby
+    #- docker

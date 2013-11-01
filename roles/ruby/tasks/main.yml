@@ -1,0 +1,25 @@
+- name: Install packages required for ruby install
+  apt: pkg={{item}} state=latest update_cache=yes install_recommends=yes
+  with_items:
+    - build-essential
+    - curl
+    - libssl-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - libreadline-dev
+    - zlib1g
+    - zlib1g-dev
+    - libmysqlclient-dev
+    - libcurl4-openssl-dev
+    - libxslt1-dev
+    - libxml2-dev
+    - libxml2
+    - tklib
+
+- name: Install Ruby
+  command: removes=no rbenv install {{ruby_version}}
+  sudo: no
+
+- name: Set ruby version
+  command: rbenv global {{ruby_version}}
+  sudo: no

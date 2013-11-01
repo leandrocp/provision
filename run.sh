@@ -15,3 +15,4 @@ sudo apt-get purge git -y
 sudo apt-get autoremove -y 
 
 ansible-playbook -c local -i hosts vm.yml
+

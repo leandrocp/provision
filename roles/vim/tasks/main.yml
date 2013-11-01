@@ -1,0 +1,23 @@
+---
+- name: Install VIM
+  apt: name={{item}} state=latest
+  with_items:
+    - vim
+    - vim-doc
+    - exuberant-ctags
+
+- name: Checkout vim files
+  git: repo=https://github.com/leandrocp/vim.git dest=~/.vim
+  sudo: no
+
+- name: mkdir neobundle
+  command: mkdir -p ~/.vim/bundle
+  sudo: no
+
+- name: Checkout neobundle
+  git: repo=https://github.com/Shougo/neobundle.vim.git dest=~/.vim/bundle/neobundle.vim
+  sudo: no
+
+- name: Install vim
+  command: chdir=~/.vim bash install.sh
+  sudo: no
