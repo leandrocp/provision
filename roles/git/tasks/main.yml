@@ -1,0 +1,5 @@
+- name: Install Git PPA for latest git version
+  apt_repository: repo=ppa:git-core/ppa state=present
+
+- name: Install Git package
+  apt: pkg=git state=latest update_cache=yes

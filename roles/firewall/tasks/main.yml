@@ -1,0 +1,11 @@
+- name: Install Uncomplicated Firewall - UFW
+  apt: pkg=ufw state=latest
+
+- name: Setting UFW Rules
+  shell: "ufw allow 22,80,443,2812,3000/tcp"
+
+- name: Starting UFW 
+  command: ufw --force enable
+
+- name: Setting UFW on boot
+  service: name=ufw enabled=yes

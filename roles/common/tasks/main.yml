@@ -1,0 +1,17 @@
+---
+- name: Change root password
+  shell: echo root:{{root_pass}} | chpasswd
+  register: root_pass
+
+- name: Updating list packages
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install basic packages
+  apt: name={{item}} state=latest
+  with_items:
+    - zsh
+    - vim
+    - python-software-properties
+    - htop
+    - sysv-rc-conf
+

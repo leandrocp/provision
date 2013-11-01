@@ -1,0 +1,14 @@
+- name: Checkout oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+  sudo: no
+
+- name: Checkout leandrocp/dotfiles
+  git: repo=https://github.com/leandrocp/dotfiles.git dest=~/.dotfiles
+  sudo: no
+
+- name: Install dotfiles
+  command: chdir=~/.dotfiles echo "y" | bash install.sh
+  sudo: no
+
+- name: Change shell to ZSH
+  command: chsh -s /bin/zsh
