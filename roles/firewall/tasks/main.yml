@@ -1,8 +1,11 @@
 - name: Install Uncomplicated Firewall - UFW
   apt: pkg=ufw state=latest
 
-- name: Setting UFW Rules
+- name: Setting UFW TCP Rules
   shell: "ufw allow 22,80,443,2812,3000/tcp"
+
+- name: Setting UFW UDP Rules
+  shell: "ufw allow proto udp to any port 60000:61000"
 
 - name: Starting UFW 
   command: ufw --force enable
