@@ -3,3 +3,9 @@
 
 - name: Install Git package
   apt: pkg=git state=latest update_cache=yes
+
+- name: Install git tool git-encrypt - https://github.com/shadowhand/git-encrypt
+  git: repo=https://github.com/shadowhand/git-encrypt.git dest=/opt/git-encrypt version=master update=yes
+
+- name: Setting symlink to git-encrypt
+  file: src=/opt/git-encrypt/gitcrypt dest=/usr/bin/gitcrypt state=link force=yes
