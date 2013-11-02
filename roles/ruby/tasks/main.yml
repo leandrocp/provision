@@ -23,3 +23,15 @@
 - name: Set ruby version
   command: rbenv global {{ruby_version}}
   sudo: no
+
+- name: Update rubygems
+  command: gem update --system
+  sudo: no
+
+- name: Install gems
+  gem: name={{item}} state=latest
+  with_items:
+    - rake
+    - bundler
+  sudo: no
+
