@@ -1,13 +1,13 @@
 - hosts: vm
   sudo: true
   roles:
-    #- common
-    #- firewall
+    - common
+    - firewall
     - fail2ban
     - git
     - nodejs
-    #- dotfiles
-    #- vim
-    #- rbenv
-    #- ruby
+    - dotfiles
+    - vim
+    - rbenv
+    - ruby
     #- docker
