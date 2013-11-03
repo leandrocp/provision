@@ -42,5 +42,6 @@
   with_items:
     - rake
     - bundler
+    - tmuxinator
   sudo: no
 
