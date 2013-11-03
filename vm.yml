@@ -2,6 +2,7 @@
   sudo: true
   roles:
     - common
+    - locale
     - firewall
     - fail2ban
     - git
@@ -10,4 +11,4 @@
     - vim
     - rbenv
     - ruby
-    #- docker
+    - postgresql

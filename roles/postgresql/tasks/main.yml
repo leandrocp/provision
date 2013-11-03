@@ -1,0 +1,46 @@
+- name: Install Postgresql Apt Repository
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ {{ubuntu_codename}}-pgdg main'
+
+- name: Install Postgresl Apt Repository Key
+  apt_key: id=ACCC4CF8 url=http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc state=present
+
+- name: Install Postgresql package
+  apt: pkg={{ item }} state=latest install_recommends=yes update_cache=yes
+  with_items:
+    - postgresql-{{postgresql_version}}
+    - postgresql-contrib-{{postgresql_version}}
+    - libpq-dev
+    - python-psycopg2
+    - ptop
+    - pgtune
+
+- name: Setting Postgresql Client Authentication Configuration - pg_hba.conf
+  template: src=postgresql.pg_hba.conf.j2 dest=/etc/postgresql/{{postgresql_version}}/main/pg_hba.conf
+            owner=postgres group=postgres mode=0640
+  notify: reload postgresql
+
+- name: Backuping Postgresql main config file
+  command: mv /etc/postgresql/{{postgresql_version}}/main/postgresql.conf /etc/postgresql/{{postgresql_version}}/main/postgresql.conf.old creates=/etc/postgresql/{{postgresql_version}}/main/postgresql.conf.old
+
+- name: Setting Postgresql Optmizing via pgtune
+  command: pgtune
+            -i /etc/postgresql/{{postgresql_version}}/main/postgresql.conf.old
+            -o /etc/postgresql/{{postgresql_version}}/main/postgresql.conf
+            --type=Web
+  sudo_user: postgres
+
+- name: Setting Kernel Tunning for Postgresql Optmizing
+  script: postgresql.kernel.sh
+  notify: restart postgresql
+
+- name: Setting Postgresql on boot
+  service: name=postgresql enabled=yes
+
+- name: Create Postgresql user for application
+  postgresql_user: name={{db_user}} password={{db_user_pass}} role_attr_flags=SUPERUSER
+  sudo_user: postgres
+
+- name: Create Postgresql database for application
+  postgresql_db: name={{db_name}} owner={{db_user}}
+  sudo_user: postgres
+
