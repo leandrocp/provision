@@ -18,6 +18,7 @@
     - libyaml-dev
     - libsqlite3-dev
     - libreadline-dev
+    - libreadline-gplv2-dev
     - libmysqlclient-dev
     - libcurl4-openssl-dev
     - libxslt1-dev
