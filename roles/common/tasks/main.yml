@@ -9,7 +9,7 @@
 - name: Install basic packages
   apt: name={{item}} state=latest
   with_items:
-    - python-software-properties
+    - software-properties-common
     - htop
     - sysv-rc-conf
     - tmux

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get upgrade -y
+#sudo apt-get upgrade -y
 sudo apt-get install git software-properties-common -y
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
