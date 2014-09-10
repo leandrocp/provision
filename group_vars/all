@@ -1,7 +1,7 @@
-root_pass: xxx
-ruby_version: 2.0.0-p247
-local_user: ubuntu
-ubuntu_codename: precise
+root_pass: vagrant
+ruby_version: 2.1.2
+local_user: vagrant
+ubuntu_codename: trusty
 default_locale_lang: pt_BR.UTF-8
 default_locale_messages: en_US.UTF-8
 

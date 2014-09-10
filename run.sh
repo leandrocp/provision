@@ -2,8 +2,8 @@
 
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install git python-software-properties -y
-sudo add-apt-repository ppa:rquillo/ansible -y
+sudo apt-get install git software-properties-common -y
+sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible -y
 
