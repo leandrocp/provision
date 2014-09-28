@@ -8,7 +8,7 @@
     - openssl
     - curl
     - pkg-config
-    - postgresql-server-dev-9.1
+    - postgresql-server-dev-{{postgresql_version}}
     - tklib
     - zlib1g
     - zlib1g-dev
@@ -18,7 +18,6 @@
     - libyaml-dev
     - libsqlite3-dev
     - libreadline-dev
-    - libreadline-gplv2-dev
     - libmysqlclient-dev
     - libcurl4-openssl-dev
     - libxslt1-dev

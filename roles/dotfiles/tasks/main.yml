@@ -16,5 +16,8 @@
   sudo: no
 
 - name: Change shell to ZSH
-  command: usermod -s /bin/zsh {{local_user}}
+  command: chsh -s `which zsh`
+
+- name: Reload shell
+  command: env zsh; source ~/.zshrc
 

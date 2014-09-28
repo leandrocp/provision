@@ -1,6 +1,6 @@
 root_pass: vagrant
 ruby_version: 2.1.2
-local_user: vagrant
+local_user: leandrocp
 ubuntu_codename: trusty
 default_locale_lang: pt_BR.UTF-8
 default_locale_messages: en_US.UTF-8
