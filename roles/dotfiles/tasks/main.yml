@@ -15,9 +15,6 @@
   command: chdir=~/.dotfiles bash install.sh
   sudo: no
 
-- name: Change shell to ZSH
-  command: chsh -s `which zsh`
-
-- name: Reload shell
-  command: env zsh; source ~/.zshrc
+- name: Change default shell to ZSH
+  user: name={{local_user}} shell=/usr/bin/zsh
 
